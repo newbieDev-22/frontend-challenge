@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import { useStore } from "./store/useStore";
 import { useEffect } from "react";
 import { getColorScheme, getTypeStyles } from "./utils/colors";
+import { motion } from "framer-motion";
 
 function App() {
   const { chooseButtonList, boxesState, moveItemToBox, fetchItems, isLoading } =
@@ -14,18 +15,30 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="flex items-center justify-center min-h-screen"
+      >
         Loading...
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-8">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-8"
+    >
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <motion.h1
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          className="text-4xl font-bold text-center mb-8 text-gray-800"
+        >
           Type Sorter
-        </h1>
+        </motion.h1>
         <div className="flex flex-col md:flex-row gap-8 justify-center items-start">
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h2 className="text-xl font-semibold mb-4 text-gray-700">
@@ -60,7 +73,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
